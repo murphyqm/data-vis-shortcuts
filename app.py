@@ -1,6 +1,64 @@
 import streamlit as st
 import re
 
+st.title('Data Vis in Python cheatsheet')
+
+template_code_snippet_00 = """
+import numpy
+import matplotlib.pyplot
+
+data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+
+fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+axes1 = fig.add_subplot(1, 3, 1)
+axes2 = fig.add_subplot(1, 3, 2)
+axes3 = fig.add_subplot(1, 3, 3)
+
+axes1.set_ylabel('average')
+axes1.plot(numpy.mean(data, axis=0))
+
+axes2.set_ylabel('max')
+axes2.plot(numpy.amax(data, axis=0))
+
+axes3.set_ylabel('min')
+axes3.plot(numpy.amin(data, axis=0))
+
+fig.tight_layout()
+
+matplotlib.pyplot.savefig('inflammation.png')
+matplotlib.pyplot.show()
+"""
+
+st.code(template_code_snippet_00)
+
+template_code_snippet_01 = """
+# Import the required libraries
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create random x and y data
+
+x = np.random.rand(50)
+y = np.random.rand(50)
+
+# Create a figure and axes, and set the figure size in inches
+fig, ax = plt.subplots(figsize=(7, 4))
+
+# Plot the data as a scatter plot
+ax.scatter(x, y)
+
+# Set title and labels
+ax.set_title('Scatter Plot')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+
+# Save the figure
+fig.savefig("figure_name.png", dpi=300)
+"""
+
+st.code(template_code_snippet_01)
+
 export_pip_version_numbers = """
 # Extract installed pip packages
 pip_packages=$(conda env export | grep -A9999 ".*- pip:" | grep -v "^prefix: ")
@@ -19,7 +77,7 @@ conda env export --from-history | grep -v "^prefix: " > new-environment.yml
 echo "$pip_packages" >> new-environment.yml
 """
 
-st.title('Basic Python Project Structure')
+
 
 st.write("This webapp creates customised code snippets to help you set up a Python package project.",
 "First, look through the **Picking a project name** tab and decide on a name for your Python package.",
