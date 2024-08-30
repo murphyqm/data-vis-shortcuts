@@ -38,15 +38,14 @@ st.markdown(desc_02)
 col1, col2 = st.columns(2)
 
 with col1:
-    nrows = st.number_input("Number of rows", min_value=1, max_value=None)
-    ncols = st.number_input("Number of columns", min_value=1, max_value=None)
+    nrows = st.number_input("Number of rows", min_value=2, max_value=None)
+    ncols = st.number_input("Number of columns", min_value=2, max_value=None)
 
     sharex = st.checkbox("Share x values on all subplots")
     sharey = st.checkbox("Share y values on all subplots")
 
     x = np.linspace(0, 2 * np.pi, 400)
     y = np.sin(x ** 2)
-    fig, axs = plt.subplots()
     fig, axs = plt.subplots(nrows, ncols, constrained_layout=True, sharex=sharex, sharey=sharey)
     for row in range(nrows):
         for col in range(ncols):
